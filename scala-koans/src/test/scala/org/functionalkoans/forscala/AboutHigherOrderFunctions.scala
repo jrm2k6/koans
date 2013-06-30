@@ -9,13 +9,13 @@ class AboutHigherOrderFunctions extends KoanSuite {
       x: Int => x + 1
     }
     val result = lambda(3)
-    result should be(__)
+    result should be(4)
   }
 
   koan("An anonymous function can also take on a different look by taking out the brackets") {
     def lambda = (x: Int) => x + 1
     def result = lambda(5)
-    result should be(__)
+    result should be(6)
   }
 
   koan("Meet closure. Closure is any function that closes over the environment") {
@@ -25,12 +25,12 @@ class AboutHigherOrderFunctions extends KoanSuite {
     }
 
     val result1 = closure(10)
-    result1 should be(__)
+    result1 should be(11)
 
     incrementer = 2
 
     val result2 = closure(10)
-    result2 should be(__)
+    result2 should be(12)
   }
 
   koan("We can take that closure and throw into a method and it will still hold the environment") {
@@ -41,11 +41,11 @@ class AboutHigherOrderFunctions extends KoanSuite {
     def closure = (x: Int) => x + incrementer
 
     val result = summation(10, closure)
-    result should be(__)
+    result should be(13)
 
     incrementer = 3
     val result2 = summation(10, closure)
-    result2 should be(__)
+    result2 should be(13)
   }
 
   koan("function returning another function") {
@@ -54,21 +54,22 @@ class AboutHigherOrderFunctions extends KoanSuite {
         def apply(y: Int): Int = x + y
       }
     }
-    addWithoutSyntaxSugar(1).isInstanceOf[Function1[Int,Int]] should be(__)
-    addWithoutSyntaxSugar(2)(3) should be(__)
+    addWithoutSyntaxSugar(1).isInstanceOf[Function1[Int,Int]] should be(true)
+    addWithoutSyntaxSugar(2)(3) should be(5)
 
     def fiveAdder = addWithoutSyntaxSugar(5)
-    fiveAdder(5) should be(__)
+    // fiveAdder(something) = addWithoutSyntaxSugar(5)(5)
+    fiveAdder(5) should be(10)
   }
 
   koan("function returning another function using an anonymous function") {
     def addWithSyntaxSugar(x: Int) = (y:Int) => x + y
 
-    addWithSyntaxSugar(1).isInstanceOf[Function1[Int,Int]] should be(__)
-    addWithSyntaxSugar(2)(3) should be(__)
+    addWithSyntaxSugar(1).isInstanceOf[Function1[Int,Int]] should be(true)
+    addWithSyntaxSugar(2)(3) should be(5)
 
     def fiveAdder = addWithSyntaxSugar(5)
-    fiveAdder(5) should be(__)
+    fiveAdder(5) should be(10)
   }
 
 
@@ -78,7 +79,7 @@ class AboutHigherOrderFunctions extends KoanSuite {
       | at runtime.""") {
     def addWithSyntaxSugar(x: Int) = (y:Int) => x + y
 
-    addWithSyntaxSugar(1).isInstanceOf[Function1[_,_]] should be(__)
+    addWithSyntaxSugar(1).isInstanceOf[Function1[_,_]] should be(true)
   }
 
 
@@ -93,22 +94,22 @@ class AboutHigherOrderFunctions extends KoanSuite {
       xs map sideEffect
     }
 
-    makeUpper(List("abc", "xyz", "123")) should be(__)
+    makeUpper(List("abc", "xyz", "123")) should be(List("ABC", "XYZ", "123"))
 
     makeWhatEverYouLike(List("ABC", "XYZ", "123"), {
       x => x.toLowerCase
-    }) should be(__)
+    }) should be(List("abc", "xyz", "123"))
 
     //using it inline
-    List("Scala", "Erlang", "Clojure") map {_.length} should be(__)
+    List("Scala", "Erlang", "Clojure") map {_.length} should be(List(5,6,7))
   }
 
   koan("Currying is a technique to transform function with multiple parameters to function with one parameter") {
     def multiply(x: Int, y: Int) = x * y
-    (multiply _).isInstanceOf[Function2[_, _, _]] should be(__)
+    (multiply _).isInstanceOf[Function2[_, _, _]] should be(true)
     val multiplyCurried = (multiply _).curried
-    multiply(4, 5) should be(__)
-    multiplyCurried(3)(2) should be(__)
+    multiply(4, 5) should be(20)
+    multiplyCurried(3)(2) should be(6)
   }
 
   koan("Currying allows you to create specialized version of generalized function") {
@@ -117,10 +118,10 @@ class AboutHigherOrderFunctions extends KoanSuite {
     }
     def onlyEven(x: Int) = x % 2 == 0
     val xs = List(12, 11, 5, 20, 3, 13, 2)
-    customFilter(onlyEven)(xs) should be(__)
+    customFilter(onlyEven)(xs) should be(List(12,20,2))
 
     val onlyEvenFilter = customFilter(onlyEven) _
-    onlyEvenFilter(xs) should be(__)
+    onlyEvenFilter(xs) should be(List(12,20,2))
 
   }
 }
