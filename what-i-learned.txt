@@ -1,0 +1,14 @@
+Scala
+
+- difference between reduceLeft and foldLeft
+- swap method for tuples
+- usage of | and """ for strings
+- &~ is the same as diff for sets
+- able to use - with tuples when removing items from maps.
+- mutables maps/sets
+- Range not inclusive on upper bound
+- partial functions
+- sliding function for iterators
+- nonEmpty method
+- hasDefiniteSize
+- different syntaxes for foldLeft and foldRight (:/ :\)
