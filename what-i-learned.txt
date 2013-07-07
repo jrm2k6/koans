@@ -2,6 +2,10 @@ Ruby
 - filling an array by using << operator
 - difference between (1..5) and (1...5)
 - splat operator with parallel assignments
+- access constant using ::
+- nil.nil? method
+- Symbols
+- respond_to method
 
 Scala
 
