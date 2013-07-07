@@ -1,3 +1,8 @@
+Ruby
+- filling an array by using << operator
+- difference between (1..5) and (1...5)
+- splat operator with parallel assignments
+
 Scala
 
 - difference between reduceLeft and foldLeft
