@@ -1,3 +1,4 @@
+.*.swp
 scala/scala-koans/project/target/*
 *.class
 scala-koans/*.class
