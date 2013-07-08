@@ -8,6 +8,8 @@ Ruby
 - respond_to method
 - regexp
 - %! and %{ and %( for strings
+- << with Hashes
+
 Scala
 
 - difference between reduceLeft and foldLeft
