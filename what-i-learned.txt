@@ -6,7 +6,8 @@ Ruby
 - nil.nil? method
 - Symbols
 - respond_to method
-
+- regexp
+- %! and %{ and %( for strings
 Scala
 
 - difference between reduceLeft and foldLeft
